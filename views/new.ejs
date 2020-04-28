@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+<div style="width:30%;margin:0 auto">
+    <form action="/locations" method="POST">
+        <h2 style="color: #e0e0e0;">Create A New Location</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Location Name" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="image" placeholder="Location URL" required>
+        </div>
+        <div class="form-group">
+            <input type="textarea" class="form-control" name="desc" placeholder="Write Description" required>
+        </div>
+        <button class="btn btn-default">Submit</button>
+    </form>
+    <a href="/locations">Go Back</a>
+</div>
+<%- include("partials/footer") %>

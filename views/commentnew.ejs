@@ -1,0 +1,12 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+<div style="width:30%;margin:0 auto">
+    <form action="/locations/<%=location._id%>/comment" method="POST">
+        <h2>Create Comment</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" name="comment[text]" placeholder="Enter text">
+        </div>
+        <button class="btn btn-default">Submit</button>
+    </form>
+</div>
+<%- include("partials/footer") %>

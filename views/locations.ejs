@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Welcome To Locale!</h1>
+        <p>Post your best Location.....</p>
+        <a class="btn btn-default" href="/locations/new">Create Location</a>
+    </div>
+    <div class="row text-center" style="display: flex;flex-wrap: wrap">
+        <% locations.forEach(function(place){%>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src=" <%= place.image %> ">
+                    <div class="captain">
+                        <h4><%= place.name%></h4>
+                    </div>
+                    <a href="/locations/<%= place._id %>" class="btn btn-default">More Info</a>
+                </div>
+            </div>
+            <br>
+        <%})%>
+    </div>
+</div>
+<%- include("partials/footer") %>

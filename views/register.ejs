@@ -1,0 +1,16 @@
+
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+<div style="width:30%;margin:0 auto">
+    <form action="/register" method="POST">
+        <h2 style="color: #e0e0e0;">User Sign-Up</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="password">
+        </div>
+       <button class="btn btn-default">Submit</button>
+    </form>
+</div>
+<%- include("partials/footer") %>

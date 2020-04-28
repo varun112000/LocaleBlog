@@ -1,0 +1,53 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <h2 style="text-align: center; font-family: Arial;color: #e0e0e0;"><%= location.name%></h2> 
+            <div class="thumbnail" style="display:block;padding:2px;margin-bottom: 20px;background-color: #283048;">
+                <br>
+                <img class="img-responsive" style="border: 24px solid #efefef;padding: 24px;background-color: #fefefe;" src=" <%= location.image %> ">
+                <br>
+                <p style="color: #e0e0e0;"><i>  Submitted by <%=location.Author.username%></i></p>
+            </div>
+            <h4><p style="color:#e0e0e0;">
+                DESCRIPTION<br>
+            </p></h4>
+            <div class="well" style="background-color:#283048;">
+                <h5 style="color:#e0e0e0;"><p>   <%= location.desc%></p></h5><br>
+                <% if(location.Author.id.equals(currentUser.id)){%>
+                        <form action="/locations/<%=location._id%>/delete?_method=DELETE" method="POST">
+                            <button class="btn btn-danger btn-sm" style="width: 120px; float: right;">Delete</button>
+                        </form>
+                        <a href="/locations/<%=location._id%>/edit" class="btn btn-primary btn-sm" style="width: 120px;">Edit</a>
+                <%}%>     
+            </div>
+        </div>
+        <div class="col-md-5 infolist">
+            <br>
+            <br>
+            <br>
+            <h4><p style="color:#e0e0e0;">
+                COMMENTS
+            </p></h4>
+            <div class="well" style="background-color: #859398;">
+                <div style="text-align: right;">
+                    <a href="/locations/<%=location._id%>/comment" class="btn btn-success btn-sm">Create a Comment</a>
+                </div>
+                <% location.comments.forEach(function(comment){%>
+                    <hr>
+                    <p style="float: right;color:#e0e0e0;"><span class="glyphicon glyphicon-user"></span> <%= comment.Author.username%></p>
+                    <h5 style="font-family: Arial;color:#e0e0e0;"><%= comment.text %></h5>
+                    <% if(comment.Author.id.equals(currentUser.id)){%>
+                        <form action="/locations/<%=location._id%>/comment/<%=comment._id%>/delete?_method=DELETE" method="POST">
+                            <button class="btn btn-danger btn-sm" style="width: 120px; float: right;">Delete</button>
+                        </form>     
+                        <a class="btn btn-primary btn-sm" href="/locations/<%=location._id%>/comment/<%=comment._id%>/edit">Edit</a>    
+                    <%}%>
+                <%})%>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
